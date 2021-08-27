@@ -59,17 +59,88 @@
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers"> <code class="language-javascript">
-                    // Call Hello World
-                    function HelloWorld() {
-                        alert("Hello World");
-                    }
+//Get the user input from the page
+function getValues() {
+    //Get the alert box
+    document.getElementById("alert").classList.add("invisible");
+    document.getElementById("alert1").classList.add("invisible");
+
+    //Get the input from the page
+    let userString = document.getElementById("userString").value;
+    let race = checkString(userString);
+
+    //Display the displayString function
+    displayString(race, userString);
+}
+
+//Check if the input is a palindrome 
+function checkString(userString) {
+    //Set blank array so we can loop through the user input string
+    let race = [];
+    
+    //Loop through the array and reverse string
+    for (let index = userString.length - 1; index >= 0; index--) {
+        
+        race += userString[index];
+    }
+    return race;
+}
+
+//Display whether it is a palindrome or not
+function displayString(race, userString) {
+    let palindrome = false;
+
+    //if the user input is == race array set palindrome == true
+    if (userString == race) {
+            palindrome = true;
+        } else {
+            palindrome = false;
+        }
+    
+    if (palindrome == true ) {
+    //turn on the successful alert box
+    document.getElementById("alert").classList.remove("invisible");
+    } else {
+    //turn on the failure alert box
+    document.getElementById("alert1").classList.remove("invisible");
+    }
+
+    //write the msg to the page
+    document.getElementById("msg").innerHTML = `Your string is ${race}`;
+}
+
                 </code>
                 </pre>
             </div>
             <div class="col-lg-4">
-                <p> The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                <!-- explaination of the function getValues -->
+                <h4 class="mt-5">Function getValues</h4>
+                <p>The first thing in this function that I did was that I had to set both of the alert boxes
+                    to invisible. This was because I needed them to be invisible until called. Secondly, I set 
+                    the <b>userString</b> equal to the users input from the text box. I also needed to set the 
+                    <b>race</b> variable equal to the <b>checkString(userString)</b> function. Lastly, I called 
+                    the <b>displayString(race, userString)</b> function.
+                </p>
+                <!-- explaination of the function checkString -->
+                <h4 class="mt-5">Function checkString</h4>
+                <p>The first thing in this function that I did was that I had to create an empty array to loop
+                    through which I named <b>race</b>. Next, I created a for loop to loop through the array. I 
+                    set the <b>index = userString.length - 1</b> then if the <b>index >= 0</b> then <b>index--</b>.
+                    Then I set <b>race</b> += to <b>userString[index]</b>. Lastly, I had to return <b>race</b>. 
+                </p>
+                <!-- explaination of the function displayString -->
+                <h4 class="mt-5">Function displayString</h4>
+                <p>When creating this function I had to set parameters of <b>race</b>  and <b>userString</b> 
+                    so that I could use both of those inside that function.The first thing inside of this 
+                    function that I did was that I had to do was create a variable called <b>palindrome</b>
+                    and set it to false. Then, I created an if statement with a condition of if the <b>userString</b>
+                    is == to <b>race</b> then the <b>palindrome</b> variable is actually true else it is false. 
+                    I then needed to create a condition on whether the <b>palindrome</b> was true or false because I need to
+                    call the correct alert box. So I created an if statement with a condition of if <b>palindrome</b> == true
+                    then I remove the invisible from the <b>success</b> alert box. If <b>palindrome</b> == false then I removed the 
+                    invisible from the <b>failure</b> alert box. Lastly, I used a template literal to output the users string if
+                    it is a palindrome.
+                </p>
             </div>
         </div>
     </div>
